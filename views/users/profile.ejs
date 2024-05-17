@@ -1,0 +1,45 @@
+<% layout('layouts/boilerplate') %> <%- include('../partials/navbar') %>
+
+<section class="vh-100" style="background-color: #f4f5f5">
+  <div class="conatiner py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col col-lg-6 mb-4 mb-lg-0">
+        <div class="card mb-3" style="border-radius: 0.5rem">
+          <div class="row g-0">
+            <div class="col-md-4" 
+            style=" border-top-left-radius: 0.5rem; 
+            border-bottom-left-radius: 0.5rem; 
+            height: 300px;
+            background-image: url(<%= user.userIMG.url %>);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover; ">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h6>My profile</h6>
+                <hr class="mt-0 mb-4" />
+                <div>
+                  <h6>Username</h6>
+                  <p class="text-muted"><%= user.username %></p>
+                </div>
+                <div>
+                  <h6>Email</h6>
+                  <p class="text-muted"><%= user.email %></p>
+                </div>
+                <h6> Profile Picture </h6> 
+                <form action="/users/profile" method="POST" enctype="multipart/form-data">
+                  <div class="input-group">
+                    <input type="file" class="form-control" name="userIMG">
+                    <input type="text" style="display: none;" name="deleteImage" value="<%= user.userIMG.filename %>">
+                    <button class="btn btn-outline-secondary" type="submit">Upload</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

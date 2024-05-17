@@ -1,0 +1,48 @@
+<!-- views/reviews/edit.ejs -->
+<% layout('layouts/boilerplate') %> <%- include('../partials/navbar.ejs') %>
+<div class="row container-xxl">
+<div class="container col-1 offset-2 mt-4">
+  <img src="<%=`${config.IMG_URL}${movie.poster_path}`%>" alt="poster" style="height: 450px;box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); ">
+</div>
+<div class="container col-6 offset-2 mt-1">
+  <div>
+    <span class="display-4"> <%= movie.title %></span>
+    <small class="blockquote-footer" style="margin-left: 1em;">My review</small> 
+    <hr>
+  </div>
+      <form action="/reviews/<%= review._id %>?_method=PATCH" method="post" class="mt-5 needs-validation" novalidate>
+        <div class="mt-2">
+          <span>My rating: </span>
+        <fieldset class="starability-basic">
+          <input type="radio" id="no-rate" class="input-no-rate" name="review[score]" value="0" checked aria-label="No rating." />
+          <input type="radio" id="first-rate1" name="review[score]" value="1" <%= review.score == 1 ? "checked" : "" %> />
+          <label for="first-rate1" title="Terrible">1 star</label>
+          <input type="radio" id="first-rate2" name="review[score]" value="2"  <%= review.score == 2 ? "checked" : "" %>/>
+          <label for="first-rate2" title="Not good">2 stars</label>
+          <input type="radio" id="first-rate3" name="review[score]" value="3"  <%= review.score == 3 ? "checked" : "" %>/>
+          <label for="first-rate3" title="Average">3 stars</label>
+          <input type="radio" id="first-rate4" name="review[score]" value="4"  <%= review.score == 4 ? "checked" : "" %>/>
+          <label for="first-rate4" title="Very good">4 stars</label>
+          <input type="radio" id="first-rate5" name="review[score]" value="5"  <%= review.score == 5 ? "checked" : "" %>/>
+          <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset>
+      </div>
+        <div class="form-floating mt-2">
+          <textarea class="form-control" style="height: 180px" name="review[review]" id="review"><%=review.review%></textarea>
+          <label for="review">What did you think?</label>
+        </div>
+        <div class="row">
+          <div class="col">
+        <button type="submit" class="btn btn-outline-success mt-2" >Save</button>
+        <input type="text" name="review[movieId]" style="display: none" value="<%= review.movieId %>" />
+      </form>
+    </div>
+    <div class="col">
+      <form action="/reviews/<%= review._id %>?_method=DELETE" method="post" >
+        <button  class="btn btn-outline-danger mt-2"  type="submit" style="margin-left: 15em;">Delete </button>
+      </form>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>

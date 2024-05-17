@@ -1,0 +1,45 @@
+<!-- views/home.ejs -->
+
+<% layout('layouts/boilerplate') %> <%- include('partials/navbar') %>
+<div class="row">
+  <div class="col-10 offset-1">
+    <section id="Searcher" class="container-fluid d-flex justify-content-center mt-5">
+      <div style="margin-top: 150px; margin-bottom: 50px; width: 500px;" >
+        <form action="/home" method="POST" id="form" role="search" class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search movies" aria-label="Search" name="query" id="query">
+        <button class="btn btn-secondary" type="submit">Search</button>
+      </form>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="row mt-5 mb-5">
+  <div class="col-10 offset-1" id="popularContainer">
+    <div class="bg-body-tertiary border" id="popular">
+      <% for (let movie of movies) { %>
+        <% if (movie.poster_path !== null && movie.vote_average !== 0 ) { %>
+        <% function trimTitle(title) {return title.length > 10 ? `${title.substring(0, 10)}...` : title;} %>
+        <% let modified_average = movie.vote_average / 2; %>
+          <div class="movie">
+            <a href="/movie/<%=movie.id%>" style="text-decoration: none; color: black;">
+              <img src="<%=`${config.IMG_URL}${movie.poster_path}`%>" alt="<%= movie.title %>">
+              <div class="movie-info">
+                <h4><%= trimTitle(movie.title) %></h4>
+                <span style="color: #D02572 ;"><%= modified_average.toFixed(1) %> </span>
+              </div>
+              <div class="overview">
+                <h3> <%= `${movie.title} (${movie.release_date.substring(0,4)})` %></h3> 
+                <%= movie.overview %> 
+            </div>
+            </a>
+          </div>
+          <% } %>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+
+
+

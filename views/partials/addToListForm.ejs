@@ -1,0 +1,28 @@
+
+
+
+<% let selectedList = false; %>
+<% for (let l of lists){ %>
+  <% for (let m of l.movies) { %>
+    <% if (m.movieId.trim() === id) { %>
+      <% selectedList = l; %>
+      <% break; %>
+    <% } %>
+  <% } %>
+<% } %>
+
+
+<div>
+    <form action="<%= selectedList ?  '/users/lists?_method=PATCH' : '/users/lists' %>" method="POST">
+      <select name="list" onchange="this.form.submit()" class="form-select">
+        <option value="0">Add to list</option>
+        <% for(let list of lists) { %>
+        <option value="<%= list.listName %>" <%= list.listName === selectedList.listName ? "selected" : "" %>
+          ><%= list.listName %></option>
+        <% } %>
+      </select>
+      <input type="text" name="movieId" style="display: none" value="<%= id %>" />
+      <input type="text" name="oldList" style="display: none" value="<%= selectedList._id %>" />
+    </form>
+</div>
+

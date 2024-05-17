@@ -1,0 +1,97 @@
+
+#Searcher {
+    background-image: url(/img/buscador-background.avif);
+    height: 250px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    background-position: top;
+    background-size: cover;
+}
+
+
+#btnSubmit {
+    background-image: linear-gradient(to right, #D02572, #9F1F63, #91268A);
+    color: whitesmoke;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+#popular {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2em 2em;
+
+    & .movie {
+        width: 15em;
+        margin: 1.5rem;
+        border-radius: 3px;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+        background-color: whitesmoke;
+
+        & img {
+            
+            height: 23em;
+
+        }
+    }
+
+
+    & .movie-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 1rem 1rem;
+
+
+        & h4 {
+            margin-top: 0;
+
+        }
+
+        & span {
+            background-color: gainsboro;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    }
+
+    & .overview {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: whitesmoke;
+        padding: 1rem;
+        max-height: 100%;
+        transform: translateY(101%);
+        transition: transform 0.3s ease-in;
+    }
+
+    & .movie:hover .overview {
+        transform: translateY(0);
+    }
+}
+
+#section-singIn {
+    padding: 10em 5em;
+}
+
+#signupSection {
+    background-image: url(/img/signup-img.avif);
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+    margin-top: 5%;
+
+}
+
+footer {
+    position: relative;
+    margin-top: -60px;
+    height: 60px;
+    clear: both;
+}
+

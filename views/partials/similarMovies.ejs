@@ -1,0 +1,22 @@
+<!-- views/partials/popular.ejs-->
+
+<section class="d-flex">
+        <% for(let similarMovie of similarMovies.slice(0,5)) {%>
+            <% if (similarMovie.id != movie.id && movie.poster_path !== null && movie.vote_average !== 0) { %>
+            <% let modified_average = similarMovie.vote_average / 2; %>
+            <%function trimTitle(title) {
+                return title.length > 14 ? `${title.substring(0, 14)}...` : title;
+              } %>
+            <div style=" margin: 1em;">
+                <a href="/movie/<%= similarMovie.id %>" style="text-decoration: none; color: black;">
+                    <img src="<%=`${config.IMG_URL}${similarMovie.poster_path}`%>" alt="<%= similarMovie.title %>" style="height: 250px; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);"/>
+                    <div class="mt-2">
+                        <h6><%= trimTitle(similarMovie.title) %>   <span ><img src="/img/estrella_small.png" alt=""> <%= modified_average.toFixed(1) %></span></h6>
+                    </div>
+                </a>
+            </div>
+            <% } %>
+        <% } %>
+
+</section>
+

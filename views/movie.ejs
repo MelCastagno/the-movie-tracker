@@ -1,0 +1,86 @@
+<!-- views/movie.ejs -->
+
+<% layout('layouts/boilerplate') %> <%- include('partials/navbar') %>
+
+  <% let genreList = ''; %>  
+  <% for (let genre of movie.genres) { %> 
+  <% genreList += genre.name + ', ' %>  
+  <% }; %> 
+
+  <% let production = ''; %> 
+  <% for (let company of movie.production_companies) { %> 
+  <% production += company.name + ', ' %>  
+  <% }; %> 
+
+
+<div class="container mt-2 my-md-4">
+  <div class="row">
+  <aside class="col-2 offset-1 align-items-center" style="position: fixed; background-color: white;">
+    <div>
+      <img
+      id="poster"
+      src="<%=`${config.IMG_URL}${movie.poster_path}`%>"
+      alt="poster"
+      height="300px"
+      style="box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); margin-bottom: 2em;"
+    />
+      <% if (currentUser) {%>
+        <div style="margin-right: 1.5em;"> <%- include('partials/addToListForm') %> </div>
+      <% } %>
+      <div style="margin-left: 1em;"><%- include('reviews/new') %> </div>
+    </div>
+  </aside>
+  <main class="col-7 offset-4">
+    <div class="row">
+      <h2 class="display-6"><%= movie.title %></h2>
+      <hr>
+      <p class="lead"><%= movie.tagline %></p>
+      <div>
+        <span style="font-size: 35px;"><img src="/img/estrella.png" alt="star icon"/> <%= (movie.vote_average / 2).toFixed(1) %></span>
+        <span class="p-3 text-secondary"><%= movie.vote_count %> Ratings</span>
+      </div>
+      <p class="pt-4 pb-4"><%= movie.overview %></p>
+      <div class="row">
+        <div class="col-6">
+            <strong>Released:</strong>
+            <span> <%= movie.release_date %></span>
+        </div>
+        <div class="col-6">
+          <strong>Duration:</strong>
+          <span><%= movie.runtime %> min</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <strong>Original language:</strong> 
+          <span> <%= movie.original_language.toUpperCase() %></span> 
+        </div>
+        <div class="col-6">
+          <strong>Country:</strong> 
+          <span> <%= movie.origin_country %></span> 
+        </div>
+      </div>
+      <div class="row  mb-3">
+        <div class="col-6">
+          <strong>Genres:</strong> 
+          <span><%= genreList %></span>
+        </div>
+        <div class="col-6">
+          <strong>Production:</strong> 
+          <span><%= production %></span>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div>
+      <h3>Similar titles</h3>
+      <%- include('partials/similarMovies') %>
+    </div>
+    <hr>
+    <div>
+      <h3 class="mb-5">Ratings & Reviews</h3>
+      <%- include('reviews/index') %></div> 
+  </main>
+</div>
+</div>
+

@@ -1,0 +1,46 @@
+<!-- views/users/lists.ejs -->
+
+<% layout('layouts/boilerplate') %> <%- include('../partials/navbar') %> <%- include('../partials/listsNavbar') %>
+<link rel="stylesheet" href="/css/star.css">
+
+<!--Main layout-->
+<div class="container col-9 mt-4 vh-100">
+<table class="table table-hover table-sm table-fixed">
+  <thead>
+    <tr>
+      <th scope="col">Poster</th>
+      <th scope="col">Title</th>
+      <th scope="col">Score</th>
+      <th scope="col">Review</th>
+      <th scope="col">List</th>
+      <th scope="col">Added</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for (let l of lists) { %> 
+      <% for (let m of l.movies) { %>
+        <tr>
+          <th scope="row">
+            <a href="/movie/<%= m.movieId %>">
+              <img src="<%= m.imgPath %>" alt="poster" class="poster" height="100px"/>
+            </a>    
+          </th>
+          <td><%= m.title %></td>
+          <td><p class="starability-result" data-rating="<%= m.review?.score %>"></p></td>
+          <td width="400px"><p><small><%=m.review?.review%></small></p></td>
+          <td><p><small><%= l.listName %></small></p></td>
+          <td><%= m.added %></td>
+          <td>
+            <form action="/users/lists?_method=DELETE" method="POST">
+              <input type="text" style="display: none;" name="listId" value="<%= l._id %>">
+              <input type="text" style="display: none;" name="movieId" value="<%= m._id %>">
+              <button class="btn" type="submit"><img src="/img/bin.png" ></button>
+            </form>
+          </td>
+        </tr>
+      <% } %> 
+    <% } %>
+  </tbody>
+</table>
+</div>
