@@ -1,24 +1,24 @@
 <!-- views/partials/navbar -->
 <div class="sticky-top">
 <div style="background-color:#9F1F63; height: 40px;"></div>
-<header class="p-2 mb-3 border-bottom bg-body-tertiary navbar  navbar-expand-lg">
+<header class="p-3 mb-3 border-bottom bg-body-tertiary">
   <div class="container">
-    <div class="navbar-brand">
-      <a href="/home" class="nav-link">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/home" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
       <img src="/img/logo.png" width="40" heigth="32" />
       <span class="fs-4">TheMovieTracker</span>
     </a>
-    </div>
-    <form action="/home" method="POST" id="form" role="search" class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search movies" aria-label="Search" name="query" id="query">
-      <button class="btn btn-outline-secondary" type="submit">Search</button>
-    </form>
-    <div class="navbar-nav ml-auto">
+    <div class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="padding-left: 3em;">
       <a href="/home" class="nav-link px-2 link-secondary">HOME</a>
       <% if (currentUser) { %>
         <a href="/users/lists" class="nav-link px-2 link-body-emphasis" style="padding-left: 3em;">MY MOVIES</a>
+      </div>
+      <form action="/home" method="POST" id="form" role="search" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search movies" aria-label="Search" name="query" id="query">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </form>
         </ul>
-        <div class="dropdown-center text-end" style="padding-left: 3em;">
+        <div class="dropdown text-end" style="padding-left: 3em;">
           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
             aria-expanded="false" role="button">
             <img src=" <%= currentUser.userIMG.url %> " alt="avatar" class="rounded-circle" style="object-fit: cover ;height: 40px; width: 40px; border: 1px solid grey">
@@ -32,11 +32,16 @@
           </ul>
         </div>
         <% } else { %>
+          <form action="/home" method="POST" id="form" role="search" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search movies" aria-label="Search" name="query" id="query">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+          </form>
           <a href="/users/login" class="nav-link px-2 link-body-emphasis">LOGIN</a>
           <a href="/users/register" class="nav-link px-2 link-body-emphasis">REGISTER</a>
 
 
           <% } %>
+        </div>
     </div>
   </div>
 </header>

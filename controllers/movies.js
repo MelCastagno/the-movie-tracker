@@ -38,3 +38,6 @@ module.exports.showMovie = async (req, res) => {
    const movies = await response.json();
    res.render('home', {movies: movies.results, config});
   };
+
+
+  

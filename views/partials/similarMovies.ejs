@@ -1,6 +1,6 @@
 <!-- views/partials/popular.ejs-->
 
-<section class="d-flex">
+<section class="container d-flex flex-wrap">
         <% for(let similarMovie of similarMovies.slice(0,5)) {%>
             <% if (similarMovie.id != movie.id && movie.poster_path !== null && movie.vote_average !== 0) { %>
             <% let modified_average = similarMovie.vote_average / 2; %>

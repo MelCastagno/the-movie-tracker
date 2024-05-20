@@ -26,6 +26,7 @@ const MongoStore = require('connect-mongo');
 const dbUrl = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/test";
 const mongoose = require("mongoose");
 
+
 mongoose
   .connect(dbUrl)
   .then(() => {
@@ -118,3 +119,4 @@ const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`Serving on port ${port}`);
 });
+
