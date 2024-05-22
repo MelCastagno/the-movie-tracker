@@ -1,8 +1,10 @@
 <!-- views/home.ejs -->
 
 <% layout('layouts/boilerplate') %> <%- include('partials/navbar') %>
+
+<div class="container-fluid">
 <div class="row">
-  <div class="col-10 offset-1 d-sm-none">
+  <div class="col-10 offset-1 d-none d-md-block">
     <section id="Searcher" class="container-fluid d-flex justify-content-center mt-5">
       <div style="margin-top: 150px; margin-bottom: 50px; width: 500px;" >
         <form action="/home" method="POST" id="form" role="search" class="d-flex">
@@ -14,7 +16,7 @@
   </div>
 </div>
 
-<div class="row mt-5 mb-5">
+<div class="row mt-5 mb-5 ">
   <div class="col-md-10 offset-md-1" id="popularContainer">
     <div class="bg-body-tertiary border" id="popular">
       <% for (let movie of movies) { %>
@@ -39,6 +41,6 @@
   </div>
 </div>
 
-
+</div>
 
 
