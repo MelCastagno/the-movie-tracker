@@ -20,9 +20,9 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
-// const MongoStore = require('connect-mongo');
+const MongoStore = require('connect-mongo');
 const dbUrl = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/test";
-const dbUrl = "mongodb://127.0.0.1:27017/test";
+// const dbUrl = "mongodb://127.0.0.1:27017/test";
 const mongoose = require("mongoose");
 
 
