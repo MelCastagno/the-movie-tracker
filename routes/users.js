@@ -37,10 +37,10 @@ router.route('/lists/:id')
 
 const pepa = (req, res, next) => { 
     upload.single('userIMG')(req, res, ( ) => {
+        console.log(process.env.cloud_name, process.env.api_key, process.env.api_secret)
         console.log(req.body)
         console.log('file')
         console.log(req.file)
-        next()
     })
   
     next()
