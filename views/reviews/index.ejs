@@ -1,30 +1,29 @@
 <!-- views/reviews/index.ejs -->
-<div class="py-3 mb-4 border-bottom p-3">
+<div id="commentSectionContent" class="py-3 mb-4 border-bottom p-3">
   <% for(let c of reviews) { %>
  
     <div class="row">
-      <div class="me-md-auto col-2 d-flex justify-content-center align-items-center ">
+      <div class="col me-md-auto d-flex justify-content-center align-items-center">
         <div>
         <img
           src="<%= c.user.userIMG.url %>"
           alt="avatar"
           class="bi me-2 b"
-          style="border-radius: 50px; object-fit: cover; width: 80px; height: 80px; border: 1px solid grey; "
         />
         <div class="h5 text-center"> <%= c.user.username %></div>
       </div>
-        
-        
+      
+      <div class="col offset-1 justify-content-end">
+        <div><small><%= c.created.toISOString().slice(0, 10) %></small></div>
+        <p class="starability-result" data-rating="<%= c.score %>"></p>  
       </div>
-      <div class="col-9 offset-1">
-        <div style="text-align: end;"><small><%= c.created.toISOString().slice(0, 10) %></small></div>
-        <p class=" starability-result" data-rating="<%= c.score %>"></p> 
-        <p class=""><%= c.review %></p> 
-        <div class="d-flex justify-content-between p-2">
-        </div>
-        <hr>
-      </div> 
+      
     </div>
+  </div>
+  <div class="row mt-2">
+    <p><%= c.review %></p> 
+    <hr>
+  </div>
       <% } %>
 </div>
    

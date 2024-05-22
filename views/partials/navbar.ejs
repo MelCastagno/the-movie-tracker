@@ -6,9 +6,9 @@
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <a href="/home" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
       <img src="/img/logo.png" width="40" heigth="32" />
-      <span class="fs-4">TheMovieTracker</span>
+      <span class="fs-4" style="margin-left: .5em;">TheMovieTracker</span>
     </a>
-    <div class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="padding-left: 3em;">
+    <div class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="padding-left: 3em; padding-right: 3em;">
       <a href="/home" class="nav-link px-2 link-secondary">HOME</a>
       <% if (currentUser) { %>
         <a href="/users/lists" class="nav-link px-2 link-body-emphasis" style="padding-left: 3em;">MY MOVIES</a>
@@ -36,9 +36,10 @@
             <input class="form-control me-2" type="search" placeholder="Search movies" aria-label="Search" name="query" id="query">
             <button class="btn btn-outline-secondary" type="submit">Search</button>
           </form>
+          <div class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-end mb-md-0">
           <a href="/users/login" class="nav-link px-2 link-body-emphasis">LOGIN</a>
           <a href="/users/register" class="nav-link px-2 link-body-emphasis">REGISTER</a>
-
+        </div>
 
           <% } %>
         </div>

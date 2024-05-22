@@ -2,42 +2,36 @@
 <% for (let l of lists) {%>
  <% totalMovies += l.movies.length %>  
 <% } %>
-<div class="row">
-  <div class="col-2 mt-5" style="margin-left: 3em;">
-    <h2 class="text-secondary">MY LISTS</h2>
-    <ul class="list-group list-group-flush mt-3">
-      <li class="list-group-item">
-        <a href="/users/lists" class="nav-link ">All (<%= totalMovies %>)</a>
-      </li>
-      <% for (let l of lists) { %>
-        <li class="list-group-item d-flex align-items-center ">
-            <% if (l.listName !== 'Watched' && l.listName !== 'Want to watch') { %>
-                <span>
-                    <form action="/users/lists/<%= l._id %>?_method=DELETE" method="POST">
-                        <button class="btn" type="submit"><img src="/img/cruz.png" ></button>
-                    </form>
-                </span>
-                <a href="/users/lists/<%= l._id %>" class="nav-link">
-                <%= l.listName %> (<%= l.movies.length%>)
-                </a>
-            <% } else { %>
-                <a href="/users/lists/<%= l._id %>" class="nav-link"><%= l.listName %> (<%= l.movies.length %>)</a>
+
+  <ul class="nav nav-tabs container mb-4">
+    <li class="nav-item">
+        <a href="/users/lists" class="nav-link">All (<%= totalMovies %>)</a>
+    </li>
+    <% for (let l of lists) { %>
+        <li class="nav-item" >
+        <% if (l.listName !== 'Watched' && l.listName !== 'Want to watch') { %>
+        <div class="d-flex">
+            <a href="/users/lists/<%= l._id %>" class="nav-link" ><%= l.listName %> (<%= l.movies.length%>)</a>
+            <span>
+                <form action="/users/lists/<%= l._id %>?_method=DELETE" method="POST">
+                    <button class="btn" type="submit" aria-label="Delete"><img src="/img/cruz.png"></button>
+                </form>
+            </span>
+        </div>
+        <% } else { %>
+            <a href="/users/lists/<%= l._id %>" class="nav-link" ><%= l.listName %> (<%= l.movies.length%>)</a>
             <% } %>
         </li>
     <% } %>
-        <li style="list-style-type: none;">
-            <div class="dropdown">
-                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Create new list
-                </button>
-                <div class="dropdown-menu">
-                    <form action="/users/lists/<%= lists[0]._id %>" method="post" class="px-1 py-1">
-                        <input type="text" class="form-control" name="newListName" required placeholder="Name" />
-                        <button type="submit" class="btn btn-secondary mt-2 col-12" >Add</button>
-                    </form>
-                </div>
-            </div>
-          
-        </li>
-    </ul>
-  </div>
+    <li class="nav-item dropdown">
+        <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Create new list
+        </button>
+        <div class="dropdown-menu">
+            <form action="/users/lists/<%= lists[0]._id %>" method="post" class="px-1 py-1">
+                <input type="text" class="form-control" name="newListName" required placeholder="Name" />
+                <button type="submit" class="btn btn-secondary mt-2 col-12" >Add</button>
+            </form>
+        </div>  
+    </li>
+  </ul>

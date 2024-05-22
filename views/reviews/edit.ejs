@@ -1,10 +1,10 @@
 <!-- views/reviews/edit.ejs -->
 <% layout('layouts/boilerplate') %> <%- include('../partials/navbar.ejs') %>
-<div class="row container-xxl">
-<div class="container col-1 offset-2 mt-4">
-  <img src="<%=`${config.IMG_URL}${movie.poster_path}`%>" alt="poster" style="height: 450px;box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); ">
+<div class="row">
+<div class="col-md-3 offset-1">
+  <img id="editReviewPoster" src="<%=`${config.IMG_URL}${movie.poster_path}`%>" alt="poster" class="img-fluid img-thumbnail" style="box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); height: 400px;" >
 </div>
-<div class="container col-6 offset-2 mt-1">
+<div class="col-md-6 offset-1 mt-1">
   <div>
     <span class="display-4"> <%= movie.title %></span>
     <small class="blockquote-footer" style="margin-left: 1em;">My review</small> 
@@ -27,8 +27,8 @@
           <label for="first-rate5" title="Amazing">5 stars</label>
         </fieldset>
       </div>
-        <div class="form-floating mt-2">
-          <textarea class="form-control" style="height: 180px" name="review[review]" id="review"><%=review.review%></textarea>
+        <div class="form-floating mt-md-2 ">
+          <textarea id="textareaEdit" class="form-control" style="height: 180px" name="review[review]" id="review"><%=review.review%></textarea>
           <label for="review">What did you think?</label>
         </div>
         <div class="row">

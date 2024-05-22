@@ -1,43 +1,31 @@
 <!-- views/users/register.ejs -->
 
-<% layout('layouts/boilerplate') %>
-  <%- include('../partials/navbar') %>
+<% layout('layouts/boilerplate') %>  <%- include('../partials/navbar') %>
 
- 
-<section class="overflow-hidden vh-100" id="signupSection">
-      <div class="container py-5 px-md-5 text-center text-lg-start my-5">
-        <div class="row gd-lg-5 align-items-center mb-5">
-          <div class="col-6 offset-3 ">
-            <div class="card bg-glass" style="max-width: 600px;">
-              <div class="card-body px-4 py-5 px-md-5">
-                <%- include('../partials/flash') %>
-                <h1 class="mb-4">Register here</h1>
-                <form action="/users/register" method="POST" class="needs-validation" novalidate>
-                  <!-- Username input-->
-                    <div class="form-outline form-floating mb-4">
-                      <input type="text" id="username" class="form-control" name="username" required />
-                      <label class="form-label" for="username">Username</label>
-                    </div>
-                  <!-- Email input -->
-                  <div class="form-outline mb-4 form-floating">
-                    <input type="email" id="email" name="email" class="form-control" required />
-                    <label class="form-label" for="emal">Email</label>
-                  </div>
-                  <!-- Password input -->
-                  <div class="form-outline mb-4 form-floating">
-                    <input type="password" id="password" name="password" class="form-control" required />
-                    <label class="form-label" for="password">Password</label>
-                  </div>
-                  <!-- Submit button -->
-                  <button type="submit" class="btn btn-block mb-4" id="btnSubmit">
-                    Sign up
-                  </button>
-              </form>
+<section class="container-fluid" id="signupSection">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8 offset-md-2 m-5">
+      <div class="card p-5">
+          <h1 class="mb-4">Register here</h1>
+          <form action="/users/register" method="POST" class="needs-validation" novalidate>
+              <div class="form-outline form-floating mb-4">
+                <input type="text" id="username" class="form-control" name="username" required />
+                <label class="form-label" for="username">Username</label>
+              </div>
+            <div class="form-outline mb-4 form-floating">
+              <input type="email" id="email" name="email" class="form-control" required />
+              <label class="form-label" for="emal">Email</label>
             </div>
+            <div class="form-outline mb-4 form-floating">
+              <input type="password" id="password" name="password" class="form-control" required />
+              <label class="form-label" for="password">Password</label>
             </div>
-          </div>
-        </div>
+            <button type="submit" class="btn btn-block mb-4" id="btnSubmit">
+              Sign up
+            </button>
+        </form>
       </div>
+    </div>
+  </div>
 </section>
-
     

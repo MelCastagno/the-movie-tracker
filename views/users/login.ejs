@@ -1,13 +1,13 @@
 <!-- views/users/login.ejs -->
 <% layout('layouts/boilerplate') %>
-<section class="vh-100">
+<section class="vh-100" id="login-normal">
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-6 text-black" id="section-singIn">
         <div class="px-5 ms-xl-4">
           <a href="/home" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
             <img src="/img/logo.png" alt="logo" width="72" height="72" class="mb-4" />
-            <span class="h1 fw-bold mb-0" style="padding-left: 10px;">TheMovieTracker</span>
+            <span class="h1 fw-bold mb-0" style="margin-left: .5em;" >TheMovieTracker</span>
           </a>
         </div>
         <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
@@ -32,7 +32,7 @@
           </form>
         </div>
       </div>
-      <div class="col-sm-6 px-0 d-none d-sm-block">
+      <div class="col-md-6 d-md-none d-lg-block">
         <img
           src="/img/signin-img.avif"
           alt="Login image"
@@ -41,5 +41,38 @@
         />
       </div>
     </div>
+  </div>
+</section>
+
+<section id="loginMovil">
+  <div class="container mb-5">
+    <div class="px-5 ms-xl-4 mt-5">
+      <a href="/home" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <img src="/img/logo.png" alt="logo" width="45" height="45" class="mb-4"/>
+        <span class="h1 fw-bold" style="margin-left: .5em;">TheMovieTracker</span>
+      </a>
+    </div>
+    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-2 pt-xl-0 mt-xl-n5">
+      <form action="/users/login" method="POST" style="width: 23rem" class="needs-validation" novalidate>
+        <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px"> Login </h3>
+        <div class="form-outline mb-4 form-floating">
+          <input type="text" id="username" name="username" class="form-control form-control-lg" required />
+          <label class="form-label" for="username">Username</label>
+        </div>
+        <div class="form-outline mb-4 form-floating">
+          <input type="password" id="password" name="password" class="form-control form-control-lg" required />
+          <label class="form-label" for="password">Password</label>
+        </div>
+        <div class="pt-1 mb-4">
+          <button class="btn btn-lg btn-block" type="submit" id="btnSubmit"> Login </button>
+        </div>
+        <%- include('../partials/flash') %>
+        <p>
+          Don't have an account?
+          <a href="/users/register" class="link">Register here</a>
+        </p>
+      </form>
+    </div>
+  </div>
   </div>
 </section>
