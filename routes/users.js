@@ -34,21 +34,9 @@ router.route('/lists/:id')
     .post(isLoggedIn, catchAsync(users.addNewList))
     .delete(isLoggedIn, catchAsync(users.deleteList));
 
-
-const pepa = (req, res, next) => { 
-    upload.single('userIMG')(req, res, ( ) => {
-        console.log(process.env.CLOUD_NAME, process.env.API_KEY, process.env.API_SECRET)
-        console.log(req.body)
-        console.log('file')
-        console.log(req.file)
-    })
-  
-    next()
-    }
-
 router.route('/profile')
     .get( isLoggedIn, catchAsync( users.getProfile ))
-    .post( isLoggedIn, pepa, catchAsync(users.uploadIMG));
+    .post( isLoggedIn,  upload.single('userIMG'), catchAsync(users.uploadIMG));
 
 
 module.exports = router;
