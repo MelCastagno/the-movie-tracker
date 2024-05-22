@@ -35,9 +35,20 @@ router.route('/lists/:id')
     .delete(isLoggedIn, catchAsync(users.deleteList));
 
 
+const pepa = (req, res, next) => { 
+    upload.single('userIMG')(req, res, ( ) => {
+        console.log(req.body)
+        console.log('file')
+        console.log(req.file)
+        next()
+    })
+  
+    next()
+    }
+
 router.route('/profile')
     .get( isLoggedIn, catchAsync( users.getProfile ))
-    .post( isLoggedIn, upload.single('userIMG'), catchAsync(users.uploadIMG));
+    .post( isLoggedIn, pepa, catchAsync(users.uploadIMG));
 
 
 module.exports = router;
