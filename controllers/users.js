@@ -7,12 +7,30 @@ const searchMovies = require('../public/js/searchMoviesInLists');
 module.exports.userRegister = async (req, res) => {
     try {
         const { username, email, password } = req.body;
-        const user = new User({ username, email, lists: [{ listName: 'Watched' }, { listName: 'Want to watch' }] });
+
+        if (password.length < 8) {
+            req.flash('error', 'Password must be at least 8 characters long.');
+            return res.redirect('/users/register');
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            req.flash('error', 'Please enter a valid email address.');
+            return res.redirect('/users/register');
+        }
+
+        const user = new User({ 
+            username, 
+            email, 
+            lists: [{ listName: 'Watched' }, { listName: 'Want to watch' }] 
+        });
+
         const registerUser = await User.register(user, password);
         req.login(registerUser, err => {
             if (err) return next(err);
             res.redirect('/home');
-        })
+        });
+
     } catch (e) {
         req.flash('error', e.message)
         res.redirect('/users/register')

@@ -23,7 +23,7 @@
             <button type="submit" class="btn btn-block mb-4" id="btnSubmit">
               Sign up
             </button>
-            <p id="passwordError" style="color:red;"></p>
+            <p id="errorMessage" style="color:red;"></p>
         </form>
       </div>
     </div>
@@ -33,14 +33,26 @@
 <script>
   document.getElementById('registerForm').addEventListener('submit', function(event) {
     const password = document.getElementById('password').value;
-    const passwordError = document.getElementById('passwordError');
-    const passwordRegex = /^(?=.*[0-9])[A-Za-z0-9]{8,}$/;
+    const email = document.getElementById('email').value;
+    const errorMessage = document.getElementById('errorMessage');
 
-    if (!passwordRegex.test(password)) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    let errors = [];
+
+    if (password.length < 8) {
+      errors.push('Password must be at least 8 characters long.');
+    }
+
+    if (!emailRegex.test(email)) {
+      errors.push('Please enter a valid email address.');
+    }
+
+    if (errors.length > 0) {
       event.preventDefault();
-      passwordError.textContent = 'Password must be at least 8 characters long and include at least one number. Symbols are not allowed.';
+      errorMessage.innerHTML = errors.join('<br>');
     } else {
-      passwordError.textContent = '';
+      errorMessage.innerHTML = '';
     }
   });
 </script>
