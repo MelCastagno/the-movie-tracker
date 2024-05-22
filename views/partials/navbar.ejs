@@ -1,5 +1,5 @@
 <!-- views/partials/navbar -->
-<div class="sticky-top">
+<div class="sticky-top d-none ">
 <div style="background-color:#9F1F63; height: 40px;"></div>
 <header class="p-3 mb-3 border-bottom bg-body-tertiary">
   <div class="container">
@@ -46,4 +46,30 @@
     </div>
   </div>
 </header>
+</div>
+
+<div style="background-color:#9F1F63; height: 40px;"></div>
+<div class="sticky-top bg-body-tertiary">
+  <div class="container border-bottom p-2 justify-content-center align-items-center text-center d-lg-flex justify-content-lg-between">
+    <a href="/home" class="text-decoration-none link-body-emphasis">
+      <img src="/img/logo.png" width="40" heigth="40" />
+      <span class="fs-4">TheMovieTracker</span>
+    </a>
+    <form action="/home" method="POST" id="form" role="search" class="d-flex m-2">
+      <input class="form-control me-2" type="search" placeholder="Search movies" aria-label="Search" name="query" id="query">
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </form>
+    <div class="nav justify-content-center">
+      <a href="/home" class="nav-link px-2 link-secondary">HOME</a>
+      <% if (currentUser) { %>
+        <a href="/users/lists" class="nav-link px-2 link-body-emphasis">MY MOVIES</a>
+        <a href="/users/profile" class="nav-link px-2 link-body-emphasis">PROFILE</a>
+        <a href="/users/logout" class="nav-link px-2 link-body-emphasis">LOGOUT</a>
+    </div>
+        <% } else { %>
+          <a href="/users/login" class="nav-link px-2 link-body-emphasis">LOGIN</a>
+          <a href="/users/register" class="nav-link px-2 link-body-emphasis">REGISTER</a>
+        <% } %>
+    </div>
+  </div>
 </div>
