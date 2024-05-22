@@ -102,8 +102,9 @@ module.exports.getProfile = async (req, res) => {
 
 module.exports.uploadIMG = async (req, res) => { 
     const { _id } = req.user._id;
-    const { path, filename } = req.file
-    const { deleteImage } = req.body
+    const { path, filename } = req.file;
+    console.log(path, filename);
+    const { deleteImage } = req.body;
     const user = await User.findByIdAndUpdate(_id, {userIMG:{url: path, filename : filename}});
     await user.save();
     if (deleteImage.length) {
